@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="grid grid-cols-12">
-                        <div class="col-span-7 p-6">
+                        <div class="col-span-12 md:col-span-7 p-6">
                             <form action="" id="formMassActions">
                                 <div class="text-2xl border-b-2 mb-3 pb-2 font-bold text-purple-800">Mes catégories</div>
                                 <div>
@@ -32,7 +32,7 @@
                             </form>
                             <div id="returnMessage"></div>
                         </div>
-                        <div class="col-start-9 col-span-4 p-6">
+                        <div class="col-span-12 md:col-start-9 md:col-span-4 p-6">
                             <div class="text-2xl border-b-2 mb-3 pb-2 font-bold text-purple-800">Ajouter une catégorie</div>
                             <div>
                                 <form action="" method="post">

@@ -14,13 +14,13 @@
 
             <!-- Name -->
             <div>
-                <x-label for="last_name" :value="__('Lastname')" />
+                <x-label for="last_name" :value="__('Nom')" />
 
                 <x-input id="name" class="block mt-1 w-full" type="text" name="last_name" :value="old('last_name')" required autofocus />
             </div>
             <!-- First Name -->
             <div class="mt-4">
-                <x-label for="first_name" :value="__('Firstname')" />
+                <x-label for="first_name" :value="__('Prénom')" />
 
                 <x-input id="name" class="block mt-1 w-full" type="text" name="first_name" :value="old('first_name')" required autofocus />
             </div>
@@ -34,7 +34,7 @@
 
             <!-- Password -->
             <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
+                <x-label for="password" :value="__('Mot de passe')" />
 
                 <x-input id="password" class="block mt-1 w-full"
                                 type="password"
@@ -44,7 +44,7 @@
 
             <!-- Confirm Password -->
             <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
+                <x-label for="password_confirmation" :value="__('Confirmer mot de passe')" />
 
                 <x-input id="password_confirmation" class="block mt-1 w-full"
                                 type="password"
@@ -53,11 +53,11 @@
 
             <div class="flex items-center justify-end mt-4">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
+                    {{ __('J\'ai déjà un compte') }}
                 </a>
 
-                <x-button class="ml-4">
-                    {{ __('Register') }}
+                <x-button class="ml-4 bg-purple-700 hover:bg-purple-900">
+                    {{ __('S\'enregistrer') }}
                 </x-button>
             </div>
         </form>

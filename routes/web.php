@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,5 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::get("/categories", [ 
+    CategoryController::class, "index"
+])->middleware(['auth'])->name('categories');
 
 require __DIR__.'/auth.php';

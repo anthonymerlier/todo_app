@@ -40,16 +40,23 @@
                 </label>
             </div>
 
-            <div class="flex items-center justify-end mt-4">
+            <div class="flex items-center justify-between mt-4 mb-4">
                 @if (Route::has('password.request'))
                     <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
                         {{ __('Mot de passe oublié ?') }}
                     </a>
                 @endif
 
-                <x-button class="ml-3">
-                    {{ __('Connexion') }}
+                <x-button class="ml-3 bg-purple-700 hover:bg-purple-900">
+                    {{ __('Se connecter') }}
                 </x-button>
+            </div>
+            <hr>
+            <div class="flex justify-center mt-4">
+                <span class="text-sm font-semi-bold text-purple-400">Pas encore inscrit ?</span>
+            </div>
+            <div class="flex justify-center mt-4">
+                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">Créer un compte gratuit</a>
             </div>
         </form>
     </x-auth-card>

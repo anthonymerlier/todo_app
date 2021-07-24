@@ -15,12 +15,28 @@ use App\Http\Controllers\CategoryController;
 */
 
 
+/**
+ *  DASHBOARD
+ */
+/**
+ * @home
+ */
 Route::get('/', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+/**
+ *  @categories
+ */
+Route::get("/categories", [ CategoryController::class, "index" ])->middleware(['auth'])->name('categories');
+Route::post("/categories", [ CategoryController::class, "store" ])->middleware(['auth'])->name('addCategory');
+Route::get("/categories/export", [ CategoryController::class, "categoryExport" ])->middleware(['auth'])->name('exportCategory');
+Route::post("/categories/delete", [ CategoryController::class, "destroyMulti"])->middleware(['auth'])->name('destroycategories');
+Route::post("/categorie/delete/{id}", [ CategoryController::class, "destroy"])->middleware(['auth'])->name('destroycategorie');
 
-Route::get("/categories", [ 
-    CategoryController::class, "index"
-])->middleware(['auth'])->name('categories');
 
+
+/**
+ * --------------------------------------------------------------------------------
+ *  AUTH PAGES
+ */
 require __DIR__.'/auth.php';

@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Task;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Exports\CategoriesExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CategoryController extends Controller
 {
@@ -15,7 +18,13 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
-        return view('categories.categories', compact('categories'));
+
+        $nbPerCategories = [];
+        foreach($categories as $category){
+            $nbPerCategories[$category->id] = Task::select()->where("category_id", $category->id)->count();
+        }
+        
+        return view('categories.categories', compact('categories', 'nbPerCategories'));
     }
 
     /**
@@ -36,7 +45,13 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = new Category();
+
+        $category->name = $request->name;
+        $category->save();
+
+        return redirect()->route('categories');
+
     }
 
     /**
@@ -76,11 +91,31 @@ class CategoryController extends Controller
     /**
      * Remove the specified category from storage.
      *
-     * @param  \App\Models\Category  $category
+     * @param string|int  $idCategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        //
+        Category::find($id)->delete();
     }
+
+    /***
+     * 
+     * @param Request $request
+     * @Return \Illuminate\Http\Response
+     */
+    public function destroyMulti(Request $request)
+    {
+        $categories = [];
+        foreach($request->category as $idCategory){
+            Category::find($idCategory)->delete();
+            $categories[] = $idCategory;
+        }
+        echo json_encode($categories);
+    }
+
+    public function categoryExport() 
+    {
+        return Excel::download(new CategoriesExport, 'categories-collection.xlsx');
+    }  
 }

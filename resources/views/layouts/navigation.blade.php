@@ -49,7 +49,9 @@
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-
+                            <x-dropdown-link :href="route('profil')">
+                                Mon profil
+                            </x-dropdown-link>
                             <x-dropdown-link :href="route('logout')" class="text-red-600"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();" >
@@ -99,7 +101,9 @@
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-
+                    <x-responsive-nav-link :href="route('profil')">
+                        Mon profil
+                    </x-responsive-nav-link>
                     <x-responsive-nav-link :href="route('logout')" class="text-red-600"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 
 /*
@@ -24,6 +25,7 @@ use App\Http\Controllers\CategoryController;
 Route::get('/', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
 /**
  *  @categories
  */
@@ -33,7 +35,10 @@ Route::get("/categories/export", [ CategoryController::class, "categoryExport" ]
 Route::post("/categories/delete", [ CategoryController::class, "destroyMulti"])->middleware(['auth'])->name('destroycategories');
 Route::post("/categorie/delete/{id}", [ CategoryController::class, "destroy"])->middleware(['auth'])->name('destroycategorie');
 
-
+/**
+ *  @profile
+ */
+Route::get('/profil', [ UserController::class, "index"])->middleware(['auth'])->name('profil');
 
 /**
  * --------------------------------------------------------------------------------

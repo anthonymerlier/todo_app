@@ -3814,7 +3814,7 @@ categoryMassAction.addEventListener("change", function (event) {
   var action = event.target.value;
 
   if (action === "delete") {
-    if (window.confirm("Êtes-vous sûr de vouloir supprimer cette cétgorie ainsi que l'ensemble des articles se situant à l'intérieur.")) {
+    if (window.confirm("ATTENTION !!! Toutes les tâches associées à cette catégorie seront également supprimées ! Êtes-vous sûr de vouloir supprimer cette cétgorie ainsi que l'ensemble des tâches se situant à l'intérieur.")) {
       var form = document.getElementById("formMassActions");
       var formData = new FormData(form);
       fetch('/categories/delete', {

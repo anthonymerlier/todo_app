@@ -14,11 +14,16 @@
                             <form action="" id="formMassActions">
                                 <div class="text-2xl border-b-2 mb-3 pb-2 font-bold text-purple-800">Mes catégories</div>
                                 <div>
+                                    @if (count($categories) < 1)
+                                        <div class="pb-12">
+                                            <p>Il n'y a aucune catégorie</p>
+                                        </div>
+                                    @endif
                                     @foreach($categories as $category)
-                                    <div class="pl-3 pb-4" id="cat{{ $category->id }}">
+                                    <div class="pl-3 pt-2 pb-2" id="cat{{ $category->id }}">
                                         <input type="checkbox" class="form-checkbox mb-1" name="category[]"
-                                            value="{{ $category->id }}"> <span class="md:text-lg">{{ $category->name }}</span>
-                                        <div class="pl-5 text-gray-400"><span class="text-red-600 font-bold">{{ $nbPerCategories[$category->id] }} @if($nbPerCategories[$category->id] > 1 OR $nbPerCategories[$category->id] < 1) tâches @else tâche @endif</span> dans la catégorie <span class="font-bold">{{ $category->name }}</span></div>
+                                            value="{{ $category->id }}"> <span class="rounded px-2 py-1 " style="background: {{ $category->color_bg }}; color: {{ $category->color_text }}">{{ $category->name }}</span>
+                                        <div class="pl-5 pt-2 text-gray-400"><span class="text-red-600 font-bold">{{ $nbPerCategories[$category->id] }} @if($nbPerCategories[$category->id] > 1 OR $nbPerCategories[$category->id] < 1) tâches @else tâche @endif</span> dans la catégorie <span class="font-bold">{{ $category->name }}</span></div>
                                     </div>
                                     @endforeach
                                 </div>

@@ -2,7 +2,10 @@
 
 namespace Database\Seeders;
 
+use Faker\Factory;
+use App\Models\Tag;
 use App\Models\User;
+use InvertColor\Color;
 use App\Models\Category;
 use Illuminate\Database\Seeder;
 
@@ -17,11 +20,18 @@ class DatabaseSeeder extends Seeder
     {
         // Default user
         User::factory(1)->create();
+        Tag::factory(30)->create();
+        $faker = Factory::create('fr_FR');
 
         // Default categories 
         foreach (["Personnel", "Professionnel", "Famille"] as $categorie){
+            $color_bg = $faker->hexColor();
+            $color_text = Color::fromHex($color_bg)->invert(true);
+            
             Category::create([
-                "name" => $categorie
+                "name" => $categorie,
+                "color_bg" => $color_bg,
+                "color_text" => $color_text
             ]);
         }
         

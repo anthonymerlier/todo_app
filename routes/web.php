@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 
@@ -34,6 +35,12 @@ Route::post("/categories", [ CategoryController::class, "store" ])->middleware([
 Route::get("/categories/export", [ CategoryController::class, "categoryExport" ])->middleware(['auth'])->name('exportCategory');
 Route::post("/categories/delete", [ CategoryController::class, "destroyMulti"])->middleware(['auth'])->name('destroycategories');
 Route::post("/categorie/delete/{id}", [ CategoryController::class, "destroy"])->middleware(['auth'])->name('destroycategorie');
+
+/***
+ * @tags
+ */
+Route::get("/etiquettes", [ TagController::class, "index"])->middleware(['auth'])->name('tags');
+Route::post("/etiquettes", [ TagController::class, "store"])->middleware(['auth'])->name('addTag');
 
 /**
  *  @profile

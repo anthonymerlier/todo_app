@@ -24,7 +24,7 @@
                     <x-nav-link :href="route('categories')" :active="request()->routeIs('categories')">
                         <box-icon name='category' size="sm" class=" w-8"></box-icon> Catégories
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('welcome')">
+                    <x-nav-link :href="route('tags')" :active="request()->routeIs('tags')">
                         <box-icon name='tag' size="sm" class=" w-8"></box-icon> Etiquettes
                     </x-nav-link>
                 </div>

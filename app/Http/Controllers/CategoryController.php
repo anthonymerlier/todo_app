@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Faker\Factory;
 use App\Models\Task;
+use InvertColor\Color;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Exports\CategoriesExport;
@@ -28,16 +30,6 @@ class CategoryController extends Controller
     }
 
     /**
-     * Show the form for creating a new category.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created category in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -46,8 +38,13 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $category = new Category();
+        $faker = Factory::create('fr_FR');
+        $color_bg = $faker->hexColor();
+        $color_text = Color::fromHex($color_bg)->invert(true); 
 
         $category->name = $request->name;
+        $category->color_bg = $color_bg;
+        $category->color_text = $color_text;
         $category->save();
 
         return redirect()->route('categories');

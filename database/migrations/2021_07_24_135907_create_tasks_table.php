@@ -19,8 +19,8 @@ class CreateTasksTable extends Migration
             $table->text('description')->nullable();
             $table->integer('priority')->default(0);
             $table->string('ref', 60)->unique();
-            $table->datetime('begin_date')->nullable();
-            $table->datetime('end_date')->nullable();
+            $table->timestamp('begin_date')->nullable();
+            $table->timestamp('end_date')->nullable();
             $table->foreignId("user_id")->constrained()->cascadeOnDelete();
             $table->foreignId("category_id")->constrained()->cascadeOnDelete();
             $table->timestamps();

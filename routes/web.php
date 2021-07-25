@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 
@@ -26,6 +27,13 @@ use App\Http\Controllers\CategoryController;
 Route::get('/', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+/**
+ * @tasks
+ */
+Route::get('/tasks', [ TaskController::class, "index" ])->middleware(['auth'])->name('tasks');
+Route::get('/tasks/category/{ref}', [ TaskController::class, "indexCategory" ])->middleware(['auth'])->name('taskscategory');
+Route::get('/task/{ref}', [ TaskController::class, "show" ])->middleware(['auth'])->name('task');
 
 /**
  *  @categories

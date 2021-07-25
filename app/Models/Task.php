@@ -11,11 +11,16 @@ class Task extends Model
 
     public function category()
     {
-        return $this->hasOne(Category::class);
+        return $this->hasOne(Category::class, "id", "category_id");
     }
 
     public function owner()
     {
         return $this->hasOne(User::class);
+    }
+
+    public function tags()
+    {
+        return $this->hasMany(TagTask::class);
     }
 }

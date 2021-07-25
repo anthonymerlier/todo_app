@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
@@ -14,7 +16,22 @@ class TaskController extends Controller
      */
     public function index()
     {
-        //
+        $tasks = Task::select()->where('user_id', Auth::user()->id)->with("category")->latest()->paginate(9);
+        // dd($tasks);
+        return view('tasks.tasks', compact('tasks'));
+    }
+
+    /**
+     * Display all tasks form a specific Category ref @ref
+     * 
+     * @return \Illuminate\Http\Response Array
+     */
+    public function indexCategory($ref)
+    {
+        $category_id = Category::select()->where("ref", $ref)->get()->first();
+        $tasks = Task::select()->where('user_id', Auth::user()->id)->where('category_id', $category_id->id)->latest()->paginate(9);
+        // dd($tasks);
+        return view('tasks.tasks', compact('tasks'));
     }
 
     /**
@@ -44,9 +61,10 @@ class TaskController extends Controller
      * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function show(Task $task)
+    public function show($ref)
     {
-        //
+        $task = Task::select()->where("ref", $ref)->get()->first();
+        return view('tasks.task', compact('task'));
     }
 
     /**

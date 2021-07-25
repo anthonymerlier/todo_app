@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-white leading-tight">
            Mon profil
         </h2>
     </x-slot>
@@ -9,10 +9,10 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <h1 class="text-2xl border-b-2 pb-4 border-purple-400">Vos informations personnelles</h1>
+                    <h1 class="text-2xl border-b-2 pb-4 border-purple-800">Vos informations personnelles</h1>
                     <form action="" method="post">
-                            <div class="flex">
-                                <div class="flex-1">
+                            <div class="flex flex-wrap">
+                                <div class="md:flex-1">
                                     <div class="pt-6 pb-6">
                                         <label for="">Votre nom</label>
                                         <x-input class="w-full border-2 border-gray-200 p-2 mt-2" name="nom" value="{{ $user->last_name }}"></x-input>
@@ -30,12 +30,12 @@
                                         <x-input class="w-full border-2 border-gray-200 p-2 mt-2" name="token" value="{{ $user->apiKey }}"></x-input>
                                     </div>
                                     <div class="pb-6">
-                                        <x-button class="bg-gray-500 hover:bg-purple-700 text-xs">Enregistrer</x-button>
+                                        <x-button class="bg-gray-500 hover:bg-purple-800 text-xs">Enregistrer</x-button>
                                     </div>
                                 </div>
-                                <div class="flex-1">
-                                    <div class="p-11">
-                                        <fieldset class="border border-solid border-red-300 p-3">
+                                <div class="md:flex-1 self-center">
+                                    <div class="md:p-11">
+                                        <fieldset class="border border-solid border-purple-800 p-3">
                                             <legend class="text-sm text-red-600 font-bold">Zone de danger</legend>
                                             <div class="flex flex-col mb-4">
                                                 <div class="flex">

@@ -18,7 +18,7 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('welcome')">
                         <box-icon name='calendar-exclamation' size="sm" class=" w-8"></box-icon> Pour demain
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('welcome')">
+                    <x-nav-link :href="route('tasks')" :active="request()->routeIs('tasks')">
                         <box-icon name='calendar' size="sm" class=" w-8"></box-icon> Tâches en cours
                     </x-nav-link>
                     <x-nav-link :href="route('categories')" :active="request()->routeIs('categories')">
@@ -83,13 +83,13 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('welcome')">
                 <box-icon name='calendar-exclamation' size="sm" class="pr-2 pt-2 w-8 h-8"></box-icon> Pour demain
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('welcome')">
+            <x-responsive-nav-link :href="route('tasks')" :active="request()->routeIs('tasks')">
                 <box-icon name='calendar' size="sm" class="pr-2 pt-2 w-8 h-8"></box-icon> Tâches en cours
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('categories')" :active="request()->routeIs('categories')">
                 <box-icon name='category' size="sm" class="pr-2 pt-2 w-8 h-8"></box-icon> Catégories
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('welcome')">
+            <x-responsive-nav-link :href="route('tags')" :active="request()->routeIs('tags')">
                 <box-icon name='tag' size="sm" class="pr-2 pt-2 w-8 h-8"></box-icon> Etiquettes
             </x-responsive-nav-link>
         </div>

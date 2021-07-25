@@ -27,7 +27,7 @@
                                     </div>
                                     <div class="pb-6">
                                         <label for="">Clé API</label>
-                                        <x-input class="w-full border-2 border-gray-200 p-2 mt-2" name="token" value="{{ $user->apiKey }}"></x-input>
+                                        <x-input class="w-full border-2 border-gray-200 p-2 mt-2" name="token" disabled value="{{ $user->apiKey }}"></x-input>
                                     </div>
                                     <div class="pb-6">
                                         <x-button class="bg-gray-500 hover:bg-purple-800 text-xs">Enregistrer</x-button>

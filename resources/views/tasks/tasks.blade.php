@@ -9,9 +9,14 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
+                    <div class="flex justify-end pb-6">
+                        <a href="{{ route('taskcreate') }}" class="bg-purple-600 hover:bg-purple-800 rounded p-2 text-white flex items-center">
+                            <box-icon type='solid' name='message-square-add' color='white' class='mr-2'></box-icon> 
+                            <span>Ajouter une tâche</span>
+                        </a>
+                    </div>
                     <div class="md:grid md:grid-flow-row md:grid-cols-3 md:grid-rows-3 md:gap-4">
                     @foreach($tasks as $task)
-                    
                         <div class="my-3 md:my-0 p-3 rounded bg-gray-100 hover:bg-gray-50 border-purple-100 hover:border-none border-2">
                             <div class="flex justify-between">
                                 <div>
@@ -28,7 +33,6 @@
                                 <span class="text-xs rounded p-2 text-gray-500 border-2 border-gray-300 hover:bg-white"><a href="{{ route('task', $task->ref) }}">Ref = ...{{ substr($task->ref, -6) }}</a></span>
                             </div>
                         </div>
-                    
                     @endforeach
                     </div>
                     <div class="">

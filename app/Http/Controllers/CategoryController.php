@@ -43,6 +43,7 @@ class CategoryController extends Controller
         $color_text = Color::fromHex($color_bg)->invert(true); 
 
         $category->name = $request->name;
+        $category->ref = bin2hex(random_bytes(23));
         $category->color_bg = $color_bg;
         $category->color_text = $color_text;
         $category->save();

@@ -13,19 +13,19 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        <box-icon type='solid' name='dashboard' size="sm" class="pr-2 mb-1"></box-icon> Tableau de bord
+                        <box-icon type='solid' name='dashboard' size="sm" class=" w-8"></box-icon> Tableau de bord
                     </x-nav-link>
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('welcome')">
-                        <box-icon name='calendar-exclamation' size="sm" class="pr-2 mb-1"></box-icon> Pour demain
+                        <box-icon name='calendar-exclamation' size="sm" class=" w-8"></box-icon> Pour demain
                     </x-nav-link>
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('welcome')">
-                        <box-icon name='calendar' size="sm" class="pr-2 mb-1"></box-icon> Tâches en cours
+                        <box-icon name='calendar' size="sm" class=" w-8"></box-icon> Tâches en cours
                     </x-nav-link>
                     <x-nav-link :href="route('categories')" :active="request()->routeIs('categories')">
-                        <box-icon name='category' size="sm" class="pr-2 mb-1"></box-icon> Catégories
+                        <box-icon name='category' size="sm" class=" w-8"></box-icon> Catégories
                     </x-nav-link>
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('welcome')">
-                        <box-icon name='tag' size="sm" class="pr-2 mb-1"></box-icon> Etiquettes
+                        <box-icon name='tag' size="sm" class=" w-8"></box-icon> Etiquettes
                     </x-nav-link>
                 </div>
             </div>
@@ -78,19 +78,19 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1 border-b-4">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                <box-icon type='solid' name='dashboard' size="sm" class="pr-2 pt-3"></box-icon> Tableau de bord
+                <box-icon type='solid' name='dashboard' size="sm" class="pr-2 pt-2 w-8 h-8"></box-icon> Tableau de bord
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('welcome')">
-                <box-icon name='calendar-exclamation' size="sm" class="pr-2 pt-3"></box-icon> Pour demain
+                <box-icon name='calendar-exclamation' size="sm" class="pr-2 pt-2 w-8 h-8"></box-icon> Pour demain
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('welcome')">
-                <box-icon name='calendar' size="sm" class="pr-2 pt-3"></box-icon> Tâches en cours
+                <box-icon name='calendar' size="sm" class="pr-2 pt-2 w-8 h-8"></box-icon> Tâches en cours
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('categories')" :active="request()->routeIs('categories')">
-                <box-icon name='category' size="sm" class="pr-2 pt-3"></box-icon> Catégories
+                <box-icon name='category' size="sm" class="pr-2 pt-2 w-8 h-8"></box-icon> Catégories
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('welcome')">
-                <box-icon name='tag' size="sm" class="pr-2 pt-3"></box-icon> Etiquettes
+                <box-icon name='tag' size="sm" class="pr-2 pt-2 w-8 h-8"></box-icon> Etiquettes
             </x-responsive-nav-link>
         </div>
 

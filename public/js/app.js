@@ -3814,38 +3814,43 @@ categoryMassAction.addEventListener("change", function (event) {
   var action = event.target.value;
 
   if (action === "delete") {
-    var form = document.getElementById("formMassActions");
-    var formData = new FormData(form);
-    fetch('/categories/delete', {
-      headers: {
-        "X-CSRF-TOKEN": token
-      },
-      method: 'post',
-      body: formData
-    }).then(function (response) {
-      return response.json();
-    }).then(function (data) {
-      if (data.length > 0) {
-        var _iterator = _createForOfIteratorHelper(data),
-            _step;
+    if (window.confirm("Êtes-vous sûr de vouloir supprimer cette cétgorie ainsi que l'ensemble des articles se situant à l'intérieur.")) {
+      var form = document.getElementById("formMassActions");
+      var formData = new FormData(form);
+      fetch('/categories/delete', {
+        headers: {
+          "X-CSRF-TOKEN": token
+        },
+        method: 'post',
+        body: formData
+      }).then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        if (data.length > 0) {
+          var _iterator = _createForOfIteratorHelper(data),
+              _step;
 
-        try {
-          for (_iterator.s(); !(_step = _iterator.n()).done;) {
-            item = _step.value;
-            document.getElementById("cat" + item).innerHTML = "";
-            categoryMassAction.selectedIndex = 0; // On remet à Zéro le Select categoryMassAction
+          try {
+            for (_iterator.s(); !(_step = _iterator.n()).done;) {
+              item = _step.value;
+              document.getElementById("cat" + item).innerHTML = "";
+              categoryMassAction.selectedIndex = 0; // On remet à Zéro le Select categoryMassAction
+            }
+          } catch (err) {
+            _iterator.e(err);
+          } finally {
+            _iterator.f();
           }
-        } catch (err) {
-          _iterator.e(err);
-        } finally {
-          _iterator.f();
+        } else {
+          return false;
         }
-      } else {
-        return false;
-      }
-    })["catch"](function (error) {
-      console.log(error);
-    }); // alert(formData.entries().next().value);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    } else {
+      categoryMassAction.selectedIndex = 0; // On remet à Zéro le Select categoryMassAction
+    } // alert(formData.entries().next().value);
+
   } else if (action === "export") {
     window.location.href = "/categories/export";
   }

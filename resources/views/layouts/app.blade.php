@@ -9,7 +9,6 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-        <script src="https://unpkg.com/boxicons@2.0.9/dist/boxicons.js"></script>
 
 
         <!-- Styles -->
@@ -17,6 +16,7 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/boxicons@2.0.8/dist/boxicons.js"></script>
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">

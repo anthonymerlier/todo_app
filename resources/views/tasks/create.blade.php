@@ -12,6 +12,8 @@
                     <div class="md:p-6">
                         <h1 class="text-2xl font-bold text-purple-800">Nouvelle tâche</h1>
                     </div>
+                    <form action="" method="post" enctype="multipart/form-data">
+                    @csrf
                     <div class="md:flex">
                         <div class="md:flex-1">
                             <div class="md:px-6 py-3">
@@ -24,25 +26,26 @@
                             </div>
                             <div class="md:px-6 py-3">
                                 <label for="begin_date">Date de début</label>
-                                <input type="text" class="w-full border border-gray-300 p-2 mt-2 rounded-md" id="begin_date">
+                                <input type="text" class="w-full border border-gray-300 p-2 mt-2 rounded-md" id="begin_date" name="begin_date">
                             </div>
                             <div class="md:px-6 py-3">
                                 <label for="end_date">Date d'échéance</label>
-                                <input type="text" class="w-full border border-gray-300 p-2 mt-2 rounded-md" id="end_date">
+                                <input type="text" class="w-full border border-gray-300 p-2 mt-2 rounded-md" id="end_date" name="end_date">
                             </div>
                         </div>
                         <div class="md:flex-1">
                             <div class="md:px-6 py-3">
                                 <label for="priority">Priorité</label>
-                                <div class=""><input type="radio" name="priority"> Basse</div>
-                                <div class=""><input type="radio" name="priority"> Moyenne</div>
-                                <div class=""><input type="radio" name="priority"> Haute</div>
-                                <div class=""><input type="radio" name="priority"> Prioritaire</div>
+                                <div class=""><input type="radio" name="priority" value="1"> Basse</div>
+                                <div class=""><input type="radio" name="priority" value="2"> Moyenne</div>
+                                <div class=""><input type="radio" name="priority" value="3"> Haute</div>
+                                <div class=""><input type="radio" name="priority" value="4"> Prioritaire</div>
+                                <div class=""><input type="radio" name="priority" value="5"> Urgent</div>
                             </div>
                             <div class="md:px-6 py-3">
                                 <fieldset class="border rounded border-solid border-gray-300 p-3">
-                                    <legend class="text-sm text-purple-800 font-bold">Image à la une</legend>
-                                    <input type="file" name="image" id="image" class="w-full">
+                                    <legend class="text-sm text-purple-800 font-bold">Fichier joint</legend>
+                                    <input type="file" name="attachment" id="attachment" class="w-full">
                                 </fieldset>
                             </div>
                             <div class="md:px-6 py-3">
@@ -63,10 +66,11 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="md:px-6 py-3 mt-9 flex justify-end">
+                            <div class="md:px-6 py-3 mt-3 flex justify-end">
                                 <x-button class="bg-purple-700 hover:bg-purple-900 text-white p-3 rounded">Ajouter cette tâche</x-button>
                             </div>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>

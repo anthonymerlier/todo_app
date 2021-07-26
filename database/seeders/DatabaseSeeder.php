@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
             
             Category::create([
                 "name" => $categorie,
-                "ref" => bin2hex(random_bytes(23)),
+                "ref" => bin2hex(random_bytes(12)),
                 "color_bg" => $color_bg,
                 "color_text" => $color_text
             ]);

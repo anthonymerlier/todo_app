@@ -4,14 +4,16 @@
         minDate: "today",
         defaultDate: "today",
         enableTime: true,
-        dateFormat: "d/m/Y à H:i"
+        altInput: true,
+        altFormat: "d/m/Y H:i"
     })
 
     flatpickr( "#end_date", {
         locale: "fr",
         minDate: "today",
         enableTime: true,
-        dateFormat: "d/m/Y à H:i"
+        altInput: true,
+        altFormat: "d/m/Y H:i"
     })
 
     var config = {

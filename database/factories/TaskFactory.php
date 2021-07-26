@@ -25,7 +25,7 @@ class TaskFactory extends Factory
             "name" => $this->faker->realText(rand(10, 30)),
             "description" => $this->faker->realText(rand(150,210)),
             "priority" => $this->faker->numberBetween(1,5),
-            "ref" => $this->faker->md5,
+            "ref" => $this->faker->regexify('[A-Za-z0-9]{24}'),
             "begin_date" => $this->faker->datetime(),
             "end_date" => $this->faker->datetime(),
             "category_id" => $this->faker->numberBetween(1,4),

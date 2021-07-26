@@ -7,6 +7,7 @@ use App\Models\Task;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class TaskController extends Controller
 {
@@ -71,7 +72,23 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $task = new Task();
+        $nameFile = Storage::disk("public")->put("attachment", $request->attachment);
+        
+        $task->name = $request->nom;
+        $task->ref = bin2hex(random_bytes(12));
+        $task->user_id = Auth::user()->id;
+        $task->description = $request->desc;
+        $task->priority = $request->priority;
+        $task->category_id = $request->category;
+        $task->attachment = $nameFile;
+        $task->begin_date = $request->begin_date . ":00"; // A vérifier avant
+        $task->end_date = $request->end_date . "00"; // A vérifier avant
+        
+        $task->save();
+        
+        return redirect()->route('tasks');
+
     }
 
     /**

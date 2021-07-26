@@ -34,6 +34,7 @@ Route::get('/', function () {
 Route::get('/tasks', [ TaskController::class, "index" ])->middleware(['auth'])->name('tasks');
 Route::get('/tasks/category/{ref}', [ TaskController::class, "indexCategory" ])->middleware(['auth'])->name('taskscategory');
 Route::get('/task/create', [ TaskController::class, "create" ])->middleware(['auth'])->name('taskcreate');
+Route::post('/task/create', [ TaskController::class, "store" ])->middleware(['auth'])->name('taskstore');
 Route::get('/task/{ref}', [ TaskController::class, "show" ])->middleware(['auth'])->name('task');
 
 /**

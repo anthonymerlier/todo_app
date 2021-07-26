@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tag;
 use App\Models\Task;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -41,7 +42,25 @@ class TaskController extends Controller
      */
     public function create()
     {
-        return view('tasks.create');
+        $tags = Tag::all();
+        $categories = Category::all();
+
+        $arrayTags = [];
+        foreach ($tags as $tag){
+            $arrayTags[] =[
+                "id" => $tag->id, 
+                "value" => $tag->name
+            ];
+        }
+
+        $arrayCategories = [];
+        foreach ($categories as $category) {
+            $arrayCategories[] = [
+                "id" => $category->id, 
+                "value" => $category->name
+            ];
+        }
+        return view('tasks.create', compact('arrayTags', 'arrayCategories'));
     }
 
     /**

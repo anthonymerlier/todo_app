@@ -13,11 +13,18 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/tom-select@1.7.7/dist/css/tom-select.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/dark.css">
+
+
         
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
         <script src="https://cdn.jsdelivr.net/npm/boxicons@2.0.8/dist/boxicons.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+        <script src="https://npmcdn.com/flatpickr/dist/l10n/fr.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/tom-select@1.7.7/dist/js/tom-select.complete.min.js"></script>
+
 
     </head>
     <body class="font-sans antialiased">

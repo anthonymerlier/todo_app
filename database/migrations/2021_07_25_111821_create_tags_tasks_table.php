@@ -13,7 +13,7 @@ class CreateTagsTasksTable extends Migration
      */
     public function up()
     {
-        Schema::create('tags_tasks', function (Blueprint $table) {
+        Schema::create('tag_tasks', function (Blueprint $table) {
             $table->id();
             $table->foreignId("tag_id")->constrained();
             $table->foreignId("task_id")->constrained();

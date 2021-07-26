@@ -56,6 +56,7 @@
                                         <option value="{{ $tag['id'] }}">{{ $tag['value'] }}</option>
                                     @endforeach
                                 </select>
+                                <input type="hidden" name="tags" id="tags" value="">
                             </div>
                             <div class="md:px-6 py-3">
                                 <label for="category">Catégorie</label>

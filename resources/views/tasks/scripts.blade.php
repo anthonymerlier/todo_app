@@ -16,8 +16,16 @@
         altFormat: "d/m/Y H:i"
     })
 
+
+
+    const tags = document.getElementById("tags");
+    const items = document.getElementsByClassName("item");
+
     var config = {
-        create: true,
+        plugins: ['remove_button'],
+        create: (input) => {
+            return {value: "none", text: input}
+        },
         render: {
             no_results:function(data,escape){
                 return '<div class="no-results">Aucune étiquette trouvée pour "'+escape(data.input)+'"</div>';
@@ -26,7 +34,23 @@
                 return '<div class="create">Ajouter l\'étiquette <strong>' + escape(data.input) + '</strong>&hellip;</div>';
             },
         },
-        maxItems: 5
+        maxItems: 5,
+        onItemAdd: () => {
+            let arrayItems = []
+            for(item of items){
+                console.log(items);
+                arrayItems.push([ item.attributes[0].value, item.firstChild.data]);
+            }
+            tags.value = JSON.stringify(arrayItems); // VOIR POUR CONCATENER LES VALEURS DU TABLEAU
+        },
+        onItemRemove: () => {
+            let arrayItems = []
+            for(item of items){
+                arrayItems.push([ item.attributes[0].value, item.firstChild.data]);
+            }
+            tags.value = JSON.stringify(arrayItems); // VOIR POUR CONCATENER LES VALEURS DU TABLEAU
+        } 
     };
-    new TomSelect('#tag', config);
+    
+    var tomselect = new TomSelect('#tag', config);
 </script>

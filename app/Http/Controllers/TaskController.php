@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Faker\Factory;
 use App\Models\Tag;
 use App\Models\Task;
+use App\Models\TagTask;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use InvertColor\Color;
 
 class TaskController extends Controller
 {
@@ -73,7 +76,6 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         $task = new Task();
-        $nameFile = Storage::disk("public")->put("attachment", $request->attachment);
         
         $task->name = $request->nom;
         $task->ref = bin2hex(random_bytes(12));
@@ -81,11 +83,41 @@ class TaskController extends Controller
         $task->description = $request->desc;
         $task->priority = $request->priority;
         $task->category_id = $request->category;
-        $task->attachment = $nameFile;
+
+        if(!empty($task->attachment)){
+            $nameFile = Storage::disk("public")->put("attachment", $request->attachment);
+            $task->attachment = $nameFile;
+        }
+
         $task->begin_date = $request->begin_date . ":00"; // A vérifier avant
         $task->end_date = $request->end_date . "00"; // A vérifier avant
         
         $task->save();
+        $createdId = $task->id;
+        
+        $arrayTags = json_decode($request->tags);
+        foreach($arrayTags as $tag){
+            if($tag[0] === "none"){
+                // On créé le tag
+                $newTag = new Tag();
+                $newTag->name = $tag[1];
+                $faker = Factory::create('fr_FR');
+                $newTag->color_bg = $faker->hexColor();
+                $newTag->color_text = Color::fromHex($newTag->color_bg)->invert(true);
+                $newTag->save();
+                $tagId = $newTag->id;
+            }else{
+                $tagId = $tag[0];
+            }
+             // puis on créé la relation
+            $tagTask = new TagTask();
+            $tagTask->tag_id = $tagId;
+            $tagTask->task_id = $createdId;
+
+            
+            
+            $tagTask->save();
+        }
         
         return redirect()->route('tasks');
 
@@ -99,7 +131,8 @@ class TaskController extends Controller
      */
     public function show($ref)
     {
-        $task = Task::select()->where("ref", $ref)->get()->first();
+        $task = Task::select()->where("ref", $ref)->with("tag")->get()->first();
+        dd($task->tag);
         return view('tasks.task', compact('task'));
     }
 

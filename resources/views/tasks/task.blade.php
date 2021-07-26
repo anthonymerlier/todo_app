@@ -13,9 +13,9 @@
                         <div class="">
                             <h1 class="text-2xl text-purple-600 font-bold">{{ mb_strtoupper($task->name) }}</h1>
                             <div class="">
-                                <a href="" class="text-sm text-gray-500 hover:text-purple-500 font-bold pr-2">#hash</a>
-                                <a href="" class="text-sm text-gray-500 hover:text-purple-500 font-bold pr-2">#tag</a>
-                                <a href="" class="text-sm text-gray-500 hover:text-purple-500 font-bold pr-2">#hashtag</a>
+                                @foreach($task->tags as $tag)
+                                <a href="" class="text-sm text-gray-500 hover:text-purple-500 font-bold pr-2">#{{ $tags[$tag->tag_id]->name }}</a>
+                                @endforeach
                             </div>
                         </div>
                         <div>
@@ -45,20 +45,28 @@
                             <div class="mb-5">
                                 <p class="font-bold">Date d'échéance :</p>
                                 <input type="text"  class="w-full text-center rounded bg-gray-200 text-gray-500" value="{{ (new DateTime($task->end_date))->format("d/m/Y à H:i")  }}" disabled>
+                                <p class="pt-3 text-center text-red-900">Cette tâche arrivera à son terme dans <span  class="font-bold">{{ $task->diffDate }} jours</span></p>
                             </div>
                             <div class="mb-5">
                                 <p class="font-bold">Etiquettes :</p>
+                                <div class="pt-1 pb-4">
+                                    @foreach($task->tags as $tag)
+                                        <a href="" class="mr-2 px-2 py-1 rounded" style="background: {{ $tags[$tag->tag_id]->color_bg }}; color: {{ $tags[$tag->tag_id]->color_text }}; line-height: 2.5em">#{{ $tags[$tag->tag_id]->name }}</a>
+                                    @endforeach
+                                </div>
                             </div>
+                            @if($task->attachment)
                             <div class="mb-5">
                                 <p class="font-bold">Pièce jointe :</p>
                                 <div class="mt-3"><a class="bg-purple-500 hover:bg-purple-700 rounded text-white p-2 " target="_blank" href="{{ asset("storage/".$task->attachment) }}">Télécharger la PJ</a></div>
                             </div>
+                            @endif
                         </div>
                     </div>
                     
-                    @if($task->attachment)
+                    
                         
-                    @endif
+                    
                 </div>
             </div>
         </div>

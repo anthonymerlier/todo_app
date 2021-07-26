@@ -7,6 +7,7 @@ use App\Models\Tag;
 use App\Models\Task;
 use App\Models\User;
 use InvertColor\Color;
+use App\Models\TagTask;
 use App\Models\Category;
 use Illuminate\Database\Seeder;
 
@@ -38,6 +39,7 @@ class DatabaseSeeder extends Seeder
         }
 
         Task::factory(38)->create();
+        TagTask::factory(83)->create();
         
 
     }

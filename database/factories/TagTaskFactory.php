@@ -2,7 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\Model;
+
+use App\Models\TagTask;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class TagTaskFactory extends Factory
@@ -12,7 +13,7 @@ class TagTaskFactory extends Factory
      *
      * @var string
      */
-    protected $model = Model::class;
+    protected $model = TagTask::class;
 
     /**
      * Define the model's default state.
@@ -22,7 +23,8 @@ class TagTaskFactory extends Factory
     public function definition()
     {
         return [
-            //
+            "task_id" => $this->faker->numberBetween(1, 38),
+            "tag_id" => $this->faker->numberBetween(1,25)
         ];
     }
 }

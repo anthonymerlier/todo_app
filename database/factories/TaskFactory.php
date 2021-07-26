@@ -27,7 +27,7 @@ class TaskFactory extends Factory
             "priority" => $this->faker->numberBetween(1,5),
             "ref" => $this->faker->regexify('[A-Za-z0-9]{24}'),
             "begin_date" => $this->faker->datetime(),
-            "end_date" => $this->faker->datetime(),
+            "end_date" => $this->faker->dateTimeBetween("now", "+45 days"),
             "category_id" => $this->faker->numberBetween(1,4),
             "user_id" => 1
         ];

@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Faker\Factory;
 use App\Models\Tag;
 use App\Models\Task;
+use InvertColor\Color;
 use App\Models\TagTask;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use InvertColor\Color;
 
 class TaskController extends Controller
 {
@@ -131,9 +132,11 @@ class TaskController extends Controller
      */
     public function show($ref)
     {
-        $task = Task::select()->where("ref", $ref)->with("tag")->get()->first();
-        dd($task->tag);
-        return view('tasks.task', compact('task'));
+        $task = Task::select()->where("ref", $ref)->with("category")->with("tags")->get()->first();
+        $tags = Tag::all();
+        $task->diffDate = Carbon::parse(Carbon::now())->diffInDays($task->end_date);
+        // dd($diffDate);
+        return view('tasks.task', compact('task', "tags"));
     }
 
     /**

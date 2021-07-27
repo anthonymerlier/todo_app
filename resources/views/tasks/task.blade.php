@@ -45,7 +45,16 @@
                             <div class="mb-5">
                                 <p class="font-bold">Date d'échéance :</p>
                                 <input type="text"  class="w-full text-center rounded bg-gray-200 text-gray-500" value="{{ (new DateTime($task->end_date))->format("d/m/Y à H:i")  }}" disabled>
-                                <p class="pt-3 text-center text-red-900">Cette tâche arrivera à son terme dans <span  class="font-bold">{{ $task->diffDate }} jours</span></p>
+                                @if($task->diffDate > 1)
+                                <p class="pt-3 text-center text-gray-700">Cette tâche arrivera à son terme <span  class="font-bold">
+                                    {{ "dans " . $task->diffDate . " jours"}} </span></p>
+                                @elseif($task->diffDate == 1)
+                                <p class="pt-3 text-center text-yellow-600">Cette tâche arrive à échéance <span  class="font-bold">
+                                    demain </span></p>
+                                @else
+                                <p class="pt-3 text-center text-red-600">Cette tâche arrive à son terme <span  class="font-bold">
+                                    aujourd'hui </span></p>
+                                @endif
                             </div>
                             <div class="mb-5">
                                 <p class="font-bold">Etiquettes :</p>

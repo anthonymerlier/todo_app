@@ -15,7 +15,7 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         <box-icon type='solid' name='dashboard' size="sm" class=" w-8"></box-icon> Tableau de bord
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('welcome')">
+                    <x-nav-link :href="route('taskstomorrow')" :active="request()->routeIs('taskstomorrow')">
                         <box-icon name='calendar-exclamation' size="sm" class=" w-8"></box-icon> Pour demain
                     </x-nav-link>
                     <x-nav-link :href="route('tasks')" :active="request()->routeIs('tasks')">

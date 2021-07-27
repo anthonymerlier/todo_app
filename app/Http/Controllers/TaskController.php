@@ -28,6 +28,21 @@ class TaskController extends Controller
     }
 
     /**
+     * Display a listing of all the tasks ending tomorrow.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function indexTomorrow()
+    {
+        $carbon = new Carbon();  
+        // On récupère après demain à minuit, soit la date maximale des tâches
+        $tomorrowTimestamp = $carbon->create('tomorrow')->timestamp + 86400;
+        // On effectue notre requête en spécifiant une date de fin maximale à $tomorrowTimestamp
+        $tasks = Task::select()->where('user_id', Auth::user()->id)->where('end_date', '<', date("Y-m-d H:i:s", $tomorrowTimestamp) )->orderBy("end_date", "asc")->paginate(9);
+        return view('tasks.tasks', compact('tasks'));
+    }
+
+    /**
      * Display all tasks form a specific Category ref @ref
      * 
      * @return \Illuminate\Http\Response Array
@@ -132,7 +147,7 @@ class TaskController extends Controller
      */
     public function show($ref)
     {
-        $task = Task::select()->where("ref", $ref)->with("category")->with("tags")->get()->first();
+        $task = Task::select()->where('user_id', Auth::user()->id)->where("ref", $ref)->with("category")->with("tags")->get()->first();
         $tags = Tag::all();
         $task->diffDate = Carbon::parse(Carbon::now())->diffInDays($task->end_date);
         // dd($diffDate);

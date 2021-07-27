@@ -57,6 +57,7 @@ Route::post("/etiquettes", [ TagController::class, "store"])->middleware(['auth'
  *  @profile
  */
 Route::get('/profil', [ UserController::class, "index"])->middleware(['auth'])->name('profil');
+Route::post('/profil', [ UserController::class, "update"])->middleware(['auth'])->name('profilupdate');
 
 /**
  * --------------------------------------------------------------------------------

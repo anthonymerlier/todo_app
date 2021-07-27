@@ -23,8 +23,9 @@ class TaskController extends Controller
     public function index()
     {
         $tasks = Task::select()->where('user_id', Auth::user()->id)->with("category")->latest()->paginate(9);
+        $categories = Category::all();
         // dd($tasks);
-        return view('tasks.tasks', compact('tasks'));
+        return view('tasks.tasks', compact('tasks', 'categories'));
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Faker\Factory;
 use App\Models\Tag;
+use Illuminate\Database\QueryException;
 use InvertColor\Color;
 use Illuminate\Http\Request;
 
@@ -28,17 +29,25 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        $tag = new Tag();
-        $faker = Factory::create('fr_FR');
-        $color_bg = $faker->hexColor();
-        $color_text = Color::fromHex($color_bg)->invert(true); 
+        try {
 
-        $tag->name = $request->name;
-        $tag->color_bg = $color_bg;
-        $tag->color_text = $color_text;
-        $tag->save();
+            $tag = new Tag();
+            $faker = Factory::create('fr_FR');
+            $color_bg = $faker->hexColor();
+            $color_text = Color::fromHex($color_bg)->invert(true); 
+            
+            $tag->name = $request->name;
+            $tag->color_bg = $color_bg;
+            $tag->color_text = $color_text;
+            $tag->save();
 
-        return redirect()->route('tags');
+            return redirect()->route('tags');
+        }
+
+        catch (QueryException $e){
+            return view('errors.404');
+        }
+
     }
 
     /**

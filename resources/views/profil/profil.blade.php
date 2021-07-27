@@ -11,6 +11,7 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <h1 class="text-2xl border-b-2 pb-4 border-purple-800">Vos informations personnelles</h1>
                     <form action="" method="post">
+                        @csrf
                             <div class="flex flex-wrap">
                                 <div class="md:flex-1">
                                     <div class="pt-6 pb-6">

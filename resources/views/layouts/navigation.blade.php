@@ -80,7 +80,7 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 <box-icon type='solid' name='dashboard' size="sm" class="pr-2 pt-2 w-8 h-8"></box-icon> Tableau de bord
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('welcome')">
+            <x-responsive-nav-link :href="route('taskstomorrow')" :active="request()->routeIs('taskstomorrow')">
                 <box-icon name='calendar-exclamation' size="sm" class="pr-2 pt-2 w-8 h-8"></box-icon> Pour demain
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('tasks')" :active="request()->routeIs('tasks')">
